@@ -4,6 +4,8 @@ import { styled } from 'nativewind';
 import { useFonts } from 'expo-font';
 import { useEffect } from 'react';
 
+SplashScreen.preventAutoHideAsync();
+
 const StyledView = styled(View);
 
 const Layout = () => {
@@ -23,6 +25,7 @@ const Layout = () => {
     if (error) throw error;
     if (fontsLoaded) SplashScreen.hideAsync();
   }, [fontsLoaded, error]);
+  if (!fontsLoaded && !error) return null;
 
   return (
     <StyledView className="flex-1 bg-black">
