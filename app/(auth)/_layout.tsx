@@ -1,11 +1,12 @@
 import {View, Text} from 'react-native';
 import React from 'react';
+import { Tabs } from 'expo-router';
 
 const AuthLayout = () => {
     return (
-        <View>
-            <Text>Auth_layout</Text>
-        </View>
+        <>
+        <Tabs></Tabs>
+        </>
     )
 }   
 
