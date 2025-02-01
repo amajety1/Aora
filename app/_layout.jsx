@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import { styled } from 'nativewind';
 import { useFonts } from 'expo-font';
 import { useEffect } from 'react';
+import GlobalProvider  from '../context/GlobalProvider';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -28,11 +29,14 @@ const Layout = () => {
   if (!fontsLoaded && !error) return null;
 
   return (
-    <StyledView className="flex-1 bg-black">
-      <Stack screenOptions={{ headerShown: false }}>
+    <GlobalProvider className="bg-primary h-full">
+      <Stack >
         <Stack.Screen name="index" options={{ headerShown: false }} />
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="(auth)" options={{ headerShown: false }} />
       </Stack>
-    </StyledView>
+    </GlobalProvider>
+   
   );
 }
 

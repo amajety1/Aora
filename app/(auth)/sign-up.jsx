@@ -8,6 +8,7 @@ import CustomButton from "../../components/CustomButton";
 import FormField from "../../components/FormField";
 
 const SignUp = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
  
   const [form, setForm] = useState({
     email: "",
@@ -16,11 +17,22 @@ const SignUp = () => {
   });
 
   const submit = async () => {
-    createUser()
-    
-  }
+    if (!form.email || !form.password || !form.username) {
+      Alert.alert("Error", "Please fill in all fields");
+      return;
+    }
+    setIsSubmitting(true);
 
-  const [submitting, setSubmitting] = useState(false);
+    try {
+      const result = await createUser(form.email, form.password, form.username);
+      router.replace("/home");
+    } catch (error) {
+      Alert.alert("Error", error.message);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
 
   return (
     <SafeAreaView className="bg-primary h-full">

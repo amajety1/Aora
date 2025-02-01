@@ -8,9 +8,11 @@
     "scheme": "fitness-app",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "jsEngine": "hermes",
     "ios": {
       "supportsTablet": true,
-      "package": "com.aniket.aora"
+      "package": "com.aniket.aora",
+      "jsEngine": "jsc"
 
     },
     "android": {
